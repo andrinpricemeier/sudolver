@@ -1,0 +1,4 @@
+= Architectural Decision Records
+:navtitle: ADR
+
+These architectural decision records describe decisions made in this project that affect certain quality attributes, such as performance.

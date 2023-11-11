@@ -1,0 +1,1 @@
+docker image inspect --format={{.Size}} sudolver

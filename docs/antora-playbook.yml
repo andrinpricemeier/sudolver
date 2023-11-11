@@ -1,0 +1,15 @@
+site:
+  title: Sudolver Docs
+  start_page: main-component::index.adoc
+  url: https://docs.sudolver.app
+content:
+  sources:
+  - url: ../
+    start_path: docs/main_component
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+asciidoc:
+  extensions:
+    - asciidoctor-kroki

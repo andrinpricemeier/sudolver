@@ -1,0 +1,3 @@
+[bandit]
+targets = /app
+skips = S104,S110

@@ -1,0 +1,18 @@
+= Architecture
+:navtitle: Architecture
+
+[c4plantuml,format=svg,target=c4 context]
+....
+@startuml C4_Elements
+!include c4_container.puml
+
+title Context diagram for Sudolver
+
+Person(player, "Player", "A sudoku player.")
+System(sudolver, "Sudolver System", "Allows players to solve sudokus.")
+
+Rel(player, sudolver, "Takes picture")
+Rel(sudolver, player, "Sends solution")
+
+@enduml
+....

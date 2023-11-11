@@ -1,0 +1,35 @@
+name: sudolver_api
+on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning'
+  push:
+    paths:
+    - 'sudolver_api/**'
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./sudolver_api
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up PDM
+        uses: pdm-project/setup-pdm@main
+        with:
+          python-version: 3.7
+      - name: Install dependencies
+        run: |
+          pdm sync -d
+      - uses: hadolint/hadolint-action@v2.0.0
+        with:
+          dockerfile: sudolver_api/Dockerfile
+      - name: Run linter
+        run: |
+          pdm run lint
+      - name: Run type checker
+        run: |
+          pdm run typecheck

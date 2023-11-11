@@ -1,0 +1,3 @@
+* xref:index.adoc[]
+* xref:architecture.adoc[]
+* xref:adr/index.adoc[]

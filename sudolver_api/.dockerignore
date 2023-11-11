@@ -1,0 +1,7 @@
+*
+.*
+!app/
+!trained_model/
+!pdm.lock
+!pyproject.toml
+!.env

@@ -1,0 +1,6 @@
+= Welcome to Sudolver
+:navtitle: Introduction
+
+This is the documentation for https://sudolver.app[Sudolver].
+
+Sudolver is an application that lets you easily solve any sudokus found in magazines or the like. Simply take a picture with your mobile's camera and sudolver will do the rest.

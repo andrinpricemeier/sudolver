@@ -1,0 +1,5 @@
+name: main-component
+title: Main Component
+version: 1.0
+nav:
+- modules/ROOT/nav.adoc

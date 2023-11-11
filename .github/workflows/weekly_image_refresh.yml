@@ -1,0 +1,36 @@
+name: weekly_image_refresh
+on:
+  schedule:
+    - cron: "0 8 * * 0"
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning'
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./sudolver_api
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Build
+        run: |
+          docker buildx build -t sudolver -o type=docker .
+      - name: Run
+        run: |
+          docker run --rm --name=sudolver-smoketest -p 8080:8080 -d sudolver:latest
+          docker kill sudolver-smoketest
+      - name: Smoketest
+        run: |
+          python smoketest_image.py
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - run: flyctl deploy --remote-only --no-cache
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+          FLY_PROJECT_PATH: sudolver_api

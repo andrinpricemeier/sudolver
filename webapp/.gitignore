@@ -1,0 +1,11 @@
+node_modules
+
+/.cache
+/public/build
+/.netlify
+.env
+package-lock
+/app/styles/output_tailwind.css
+/test-results/
+/playwright-report/
+/playwright/.cache/

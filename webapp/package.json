@@ -1,0 +1,75 @@
+{
+  "name": "sudolver",
+  "private": true,
+  "description": "Sudoku solver",
+  "license": "MIT",
+  "sideEffects": false,
+  "scripts": {
+    "build": "npm run build:css && cross-env NODE_ENV=production remix build",
+    "build:css": "tailwindcss -m -i app/styles/input_tailwind.css -o app/styles/output_tailwind.css",
+    "dev": "concurrently \"npm run dev:css\" \"netlify dev\"",
+    "dev:css": "tailwindcss -w -i app/styles/input_tailwind.css -o app/styles/output_tailwind.css",
+    "start": "cross-env NODE_ENV=production netlify dev",
+    "postinstall": "remix setup node",
+    "storybook": "concurrently \"npm run dev:css\" \"start-storybook -p 6006\"",
+    "build-storybook": "build-storybook",
+    "test:e2e": "npx playwright test"
+  },
+  "dependencies": {
+    "@heroicons/react": "^1.0.6",
+    "@netlify/functions": "^1.0.0",
+    "@octokit/core": "^4.0.4",
+    "@remix-run/netlify": "^1.6.4",
+    "@remix-run/node": "^1.6.4",
+    "@remix-run/react": "^1.6.4",
+    "@remix-run/serve": "^1.6.4",
+    "@storybook/addon-a11y": "^6.5.9",
+    "@uiball/loaders": "^1.2.6",
+    "axios": "^0.27.2",
+    "base64-arraybuffer": "^1.0.2",
+    "cross-env": "^7.0.3",
+    "merge-config": "^2.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-webcam": "^7.0.1",
+    "remix": "^1.6.4",
+    "require-from-string": "^2.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.6",
+    "@babel/preset-env": "^7.18.6",
+    "@playwright/test": "^1.23.2",
+    "@remix-run/dev": "^1.6.4",
+    "@remix-run/eslint-config": "^1.6.4",
+    "@storybook/addon-actions": "^6.5.9",
+    "@storybook/addon-essentials": "^6.5.9",
+    "@storybook/addon-interactions": "^6.5.9",
+    "@storybook/addon-links": "^6.5.9",
+    "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/builder-vite": "^0.1.39",
+    "@storybook/react": "^6.5.9",
+    "@storybook/testing-library": "^0.0.13",
+    "@types/jest": "^28.1.4",
+    "@types/react": "^17.0.24",
+    "@types/react-dom": "^17.0.9",
+    "autoprefixer": "^10.4.7",
+    "babel-loader": "^8.2.5",
+    "concurrently": "^7.2.2",
+    "eslint": "^8.19.0",
+    "jest": "^28.1.2",
+    "netlify-cli": "^10.7.1",
+    "playwright": "^1.23.2",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.1.5",
+    "ts-jest": "^28.0.5",
+    "typescript": "^4.7.4"
+  },
+  "overrides": {
+    "@octokit/plugin-paginate-rest": {
+      "@octokit/core": "$@octokit/core"
+    }
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
